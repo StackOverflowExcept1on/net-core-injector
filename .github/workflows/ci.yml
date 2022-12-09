@@ -1,0 +1,28 @@
+name: CI
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install node packages
+        run: npm install
+
+      - name: Build project
+        run: _build.bat
+        shell: cmd
+
+      - name: Run project
+        run: _run.bat
+        shell: cmd
