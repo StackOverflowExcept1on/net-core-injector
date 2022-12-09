@@ -21,7 +21,7 @@ It will build
 
 - Node.js package [net-core-injector](package.json) - DLL-injector written in TypeScript
 - [Bootstrapper](Bootstrapper) - helper native library written in C++ to interact with .NET Core runtime
-- [DemoApplication](DemoApplication) - test application to demonstrate how it works, 
+- [DemoApplication](DemoApplication) - test application to demonstrate how it works
 - [RuntimePatcher](RuntimePatcher) - code that attaches to [DemoApplication](DemoApplication)
 
 ```
@@ -49,7 +49,7 @@ I did it in [`Bootstrapper/src/library.cpp`](Bootstrapper/src/library.cpp).
 [`net-core-injector/src/main.ts`](src/main.ts) injects `Bootstrapper.dll` into C# process and loads custom assembly
 
 
-The following command runs `DemoApplication.exe` on another thread and injects code. 
+The following command runs `DemoApplication.exe` on another thread and injects code.
 ```
 start DemoApplication\dist\DemoApplication.exe
 
@@ -84,4 +84,4 @@ You can use this to mod games written in C# or to patch any software
 
 ### TODO
 
-- Linux support is incomplete due to some issues with the secondary host context in `hostfxr`.
+- Linux support is incomplete due to some issues with the secondary host context in `hostfxr`
