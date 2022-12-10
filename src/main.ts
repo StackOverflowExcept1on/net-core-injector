@@ -23,13 +23,17 @@ yargs(process.argv.slice(2))
         await script.load();
 
         const api: any = script.exports;
-        console.log('[*] api.inject() =>', await api.inject(
+        const ret = await api.inject(
             path.resolve(argv.bootstrapper),
             path.resolve(argv.runtime_config_path),
             path.resolve(argv.assembly_path),
             argv.type_name,
             argv.method_name,
-        ));
+        );
+        console.log("[*] api.inject() =>", ret);
+        if (ret !== 0) {
+            console.log("An error occurred while injection into ${argv.process_name}, see InitializeResult in sources");
+        }
         await script.unload();
     })
     .demandCommand(1)
