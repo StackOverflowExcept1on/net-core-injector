@@ -30,9 +30,9 @@ yargs(process.argv.slice(2))
             argv.type_name,
             argv.method_name,
         );
-        console.log("[*] api.inject() =>", ret);
+        console.log(`[*] api.inject() => ${ret} (InitializeResult return value)`);
         if (ret !== 0) {
-            console.log("An error occurred while injection into ${argv.process_name}, see InitializeResult in sources");
+            console.log(`An error occurred while injection into ${argv.process_name}, see InitializeResult in sources`);
         }
         await script.unload();
     })
