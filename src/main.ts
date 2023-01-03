@@ -3,6 +3,14 @@ import * as frida from "frida";
 import * as fs from "fs";
 import * as path from "path";
 
+enum InitializeResult {
+    Success,
+    HostFxrLoadError,
+    InitializeRuntimeConfigError,
+    GetRuntimeDelegateError,
+    EntryPointError,
+}
+
 yargs(process.argv.slice(2))
     .scriptName("net-core-injector")
     .usage("$0 <cmd> <args>")
@@ -30,10 +38,14 @@ yargs(process.argv.slice(2))
             argv.type_name,
             argv.method_name,
         );
-        console.log(`[*] api.inject() => ${ret} (InitializeResult return value)`);
+
+        const initialize_result = InitializeResult[ret] ?? "Unknown";
+        console.log(`[*] api.inject() => ${ret} (InitializeResult::${initialize_result})`);
+
         if (ret !== 0) {
-            console.log(`An error occurred while injection into ${argv.process_name}, see InitializeResult in sources`);
+            console.log(`An error occurred while injection into ${argv.process_name}`);
         }
+
         await script.unload();
     })
     .demandCommand(1)
