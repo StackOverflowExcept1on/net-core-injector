@@ -1,7 +1,9 @@
 ### net-core-injector
 
-
 [![Build Status](https://github.com/StackOverflowExcept1on/net-core-injector/actions/workflows/ci.yml/badge.svg)](https://github.com/StackOverflowExcept1on/net-core-injector/actions/workflows/ci.yml)
+
+In the following GIF, you can see how the code on the right intercepts the `static void F(int i)` function.
+After injecting, the original program starts outputting `1337` to the console instead of the default behavior.
 
 ![banner](assets/banner.gif)
 
