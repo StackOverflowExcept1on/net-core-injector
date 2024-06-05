@@ -5,7 +5,7 @@
 In the following GIF, you can see how the code on the right intercepts the `static void F(int i)` function.
 After injecting, the original program starts outputting `1337` to the console instead of the default behavior.
 
-![banner](assets/banner.gif)
+![banner](https://i.imgur.com/PzaC0br.gif)
 
 CLI tool that can replace C# methods in .NET Core applications
 
