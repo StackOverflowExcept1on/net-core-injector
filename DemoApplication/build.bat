@@ -1,1 +1,1 @@
-dotnet publish -c Release -r win10-x64 -o dist --self-contained
+dotnet publish -c Release -r win-x64 -p:PublishDir="%cd%/dist" --self-contained

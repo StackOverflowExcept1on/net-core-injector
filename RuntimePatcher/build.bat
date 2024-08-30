@@ -1,1 +1,1 @@
-dotnet publish -c Release -o dist
+dotnet publish -c Release -p:PublishDir="%cd%/dist"

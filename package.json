@@ -3,21 +3,20 @@
   "version": "1.0.0",
   "description": "CLI tool that can replace C# methods in .NET Core applications",
   "main": "src/main.ts",
-  "type": "module",
   "scripts": {
     "prepare": "tsc",
-    "start": "ts-node-esm src/main.ts"
+    "start": "ts-node src/main.ts"
   },
   "author": "StackOverflowExcept1on",
   "license": "MIT",
   "devDependencies": {
-    "@tsconfig/node18-strictest-esm": "^1.0.1",
-    "@types/frida-gum": "^18.2.0",
-    "@types/node": "^18.11.5",
-    "@types/yargs": "^17.0.13",
-    "frida": "^16.0.2",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.8.4",
-    "yargs": "^17.6.0"
+    "@tsconfig/recommended": "^1.0.7",
+    "@types/frida-gum": "^18.7.0",
+    "@types/node": "^22.5.1",
+    "@types/yargs": "^17.0.33",
+    "frida": "^16.4.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "yargs": "^17.7.2"
   }
 }
