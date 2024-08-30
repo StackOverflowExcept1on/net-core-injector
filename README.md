@@ -34,6 +34,11 @@ It will build
 This script should produce output like the GIF above
 
 - `_run.sh` on Linux
+
+  > [!NOTE]
+  > If you want to attach to an existing process on Linux, this requires root privileges. In this case, use
+  `_run.sh -a` (attach).
+
 - `_run.bat` on Windows
 
 ### Internal documentation
