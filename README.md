@@ -11,13 +11,18 @@ CLI tool that can replace C# methods in .NET Core applications
 
 ### Requirements
 
-- Visual Studio 2022 with installed C++ & C# build tools: https://visualstudio.microsoft.com/en/vs/
+- C++ & C#
+  - Linux: g++, .NET 8: https://dotnet.microsoft.com/en-us/download/dotnet/8.0
+  - Windows: Visual Studio 2022 with installed C++ & C# build tools: https://visualstudio.microsoft.com/en/vs/
 - Node.js: https://nodejs.org/en/download/
 - frida: https://frida.re
 
-### Installation on Windows
+### Building
 
 Open command line and run this script
+
+- `_build.sh` on Linux
+- `_build.bat` on Windows
 
 It will build
 
@@ -26,17 +31,16 @@ It will build
 - [DemoApplication](DemoApplication) - test application to demonstrate how it works
 - [RuntimePatcher](RuntimePatcher) - code that attaches to [DemoApplication](DemoApplication)
 
-```
-_build.bat
-```
-
 ### Running
 
 This script should produce output like the GIF above
 
-```
-_run.bat
-```
+- `_run.sh` on Linux
+
+  Note: If you want to attach to an existing process on Linux, this requires root privileges. In this case, use
+  `_run.sh -a` (attach).
+
+- `_run.bat` on Windows
 
 ### Internal documentation
 
@@ -50,8 +54,8 @@ I did it in [`Bootstrapper/src/library.cpp`](Bootstrapper/src/library.cpp).
 
 [`net-core-injector/src/main.ts`](src/main.ts) injects `Bootstrapper.dll` into C# process and loads custom assembly
 
-
 The following command runs `DemoApplication.exe` on another thread and injects code.
+
 ```
 start DemoApplication\dist\DemoApplication.exe
 
@@ -64,6 +68,7 @@ RuntimePatcher\dist\RuntimePatcher.dll ^
 ```
 
 Then the execution happens in this order:
+
 1. get into `DemoApplication.exe` process memory via DLL-injection of `Bootstrapper.dll`
 2. call native C++ code
    ```cpp
@@ -86,4 +91,4 @@ You can use this to mod games written in C# or to patch any software
 
 ### TODO
 
-- Linux support is incomplete due to some issues with the secondary host context in `hostfxr`
+- I don't have macOS device so it's supported for now. External contributors are welcome.

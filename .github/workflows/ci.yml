@@ -1,11 +1,32 @@
 name: CI
 on:
   push:
+    branches: [ master ]
   pull_request:
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
-  build:
+  linux-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build project
+        run: ./_build.sh
+
+      - name: Run project without root
+        run: ./_run.sh
+
+      - name: Run project with root
+        run: ./_run.sh -a
+
+  windows-build:
     runs-on: windows-latest
 
     steps:

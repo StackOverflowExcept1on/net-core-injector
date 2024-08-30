@@ -4,7 +4,7 @@
 #else
 #define EXPORT __attribute__((visibility("default")))
 #include <dlfcn.h>
-#include <cstdio>
+#include <thread>
 #endif
 
 /// This class helps to manage shared libraries
@@ -113,3 +113,32 @@ extern "C" EXPORT InitializeResult bootstrapper_load_assembly(
 
     return InitializeResult::Success;
 }
+
+#ifndef _WIN32
+std::string getEnvVar(const char *name) {
+    auto val = std::getenv(name);
+    return val == nullptr ? std::string() : std::string(val);
+}
+
+__attribute__((constructor))
+void initialize_library() {
+    auto runtime_config_path = getEnvVar("RUNTIME_CONFIG_PATH");
+    auto assembly_path = getEnvVar("ASSEMBLY_PATH");
+    auto type_name = getEnvVar("TYPE_NAME");
+    auto method_name = getEnvVar("METHOD_NAME");
+
+    if (!runtime_config_path.empty() && !assembly_path.empty() && !type_name.empty() && !method_name.empty()) {
+        std::thread thread([=] {
+            sleep(1);
+            auto ret = bootstrapper_load_assembly(
+                runtime_config_path.c_str(),
+                assembly_path.c_str(),
+                type_name.c_str(),
+                method_name.c_str()
+            );
+            printf("[+] api.inject() => %d\n", (uint32_t) ret);
+        });
+        thread.detach();
+    }
+}
+#endif
