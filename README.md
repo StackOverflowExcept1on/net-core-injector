@@ -11,8 +11,8 @@ CLI tool that can replace C# methods in .NET Core applications
 
 ### Requirements
 
-- C++
-  - Linux: g++
+- C++ & C#
+  - Linux: g++, .NET 8: https://dotnet.microsoft.com/en-us/download/dotnet/8.0
   - Windows: Visual Studio 2022 with installed C++ & C# build tools: https://visualstudio.microsoft.com/en/vs/
 - Node.js: https://nodejs.org/en/download/
 - frida: https://frida.re
