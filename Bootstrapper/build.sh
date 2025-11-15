@@ -3,5 +3,7 @@ set -ex
 
 mkdir -p build && cd build
 
-cmake ..
-cmake --build . --config Release
+cmake -DCMAKE_BUILD_TYPE=Release ..
+
+cmake --build .
+cmake --install .

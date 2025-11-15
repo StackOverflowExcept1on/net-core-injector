@@ -2,7 +2,7 @@
 #define EXPORT __declspec(dllexport)
 #include <windows.h>
 #else
-#define EXPORT __attribute__((visibility("default")))
+#define EXPORT [[gnu::visibility("default")]]
 #include <dlfcn.h>
 #include <thread>
 #endif
@@ -120,7 +120,7 @@ std::string getEnvVar(const char *name) {
     return val == nullptr ? std::string() : std::string(val);
 }
 
-__attribute__((constructor))
+[[gnu::constructor]]
 void initialize_library() {
     auto runtime_config_path = getEnvVar("RUNTIME_CONFIG_PATH");
     auto assembly_path = getEnvVar("ASSEMBLY_PATH");

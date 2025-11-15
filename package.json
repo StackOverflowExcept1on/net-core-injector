@@ -10,13 +10,13 @@
   "author": "StackOverflowExcept1on",
   "license": "MIT",
   "devDependencies": {
-    "@tsconfig/recommended": "^1.0.8",
-    "@types/frida-gum": "^18.7.1",
-    "@types/node": "^22.10.1",
+    "@tsconfig/recommended": "^1.0.13",
+    "@types/frida-gum": "^19.0.1",
+    "@types/node": "^24.10.1",
     "@types/yargs": "^17.0.33",
-    "frida": "^16.4.10",
+    "frida": "^17.5.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.2",
+    "typescript": "^5.9.3",
     "yargs": "^17.7.2"
   }
 }

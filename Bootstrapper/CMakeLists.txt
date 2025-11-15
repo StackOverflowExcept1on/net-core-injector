@@ -10,3 +10,5 @@ target_include_directories(${PROJECT_NAME} PRIVATE include)
 if (NOT WIN32)
     target_link_libraries(${PROJECT_NAME} PRIVATE dl)
 endif ()
+
+install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_BINARY_DIR}/bin)

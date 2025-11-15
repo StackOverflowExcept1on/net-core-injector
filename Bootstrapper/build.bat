@@ -1,5 +1,7 @@
 @echo off
 
+set CMAKE_BUILD_TYPE="Release"
+
 if not exist build mkdir build
 cd build
 
@@ -8,7 +10,7 @@ set cmakeLookup=call %vswhere% -latest -requires Microsoft.VisualStudio.Componen
 
 for /f "tokens=*" %%i in ('%cmakeLookup%') do set cmake="%%i"
 
-%cmake% ..
-%cmake% --build . --config Release
+%cmake% -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ..
+%cmake% --build . --config %CMAKE_BUILD_TYPE% --target INSTALL
 
 cd ..
