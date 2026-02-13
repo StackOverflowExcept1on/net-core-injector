@@ -3,7 +3,7 @@ rpc.exports = {
         const bootstrapperModule = Module.load(bootstrapper);
 
         const functionPointer = bootstrapperModule.getExportByName("bootstrapper_load_assembly");
-        const bootstrapper_load_assembly = new NativeFunction(functionPointer, "uint32", ["pointer", "pointer", "pointer", "pointer"]);
+        const bootstrapper_load_assembly = new NativeFunction(functionPointer, "uint32", ["pointer", "pointer", "pointer", "pointer"], { exceptions: "propagate" });
 
         const allocUtfString = Process.platform === "windows" ? Memory.allocUtf16String : Memory.allocUtf8String;
         return bootstrapper_load_assembly(
