@@ -10,7 +10,7 @@ set cmakeLookup=call %vswhere% -latest -requires Microsoft.VisualStudio.Componen
 
 for /f "tokens=*" %%i in ('%cmakeLookup%') do set cmake="%%i"
 
-%cmake% -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ..
+%cmake% -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON -DDEFAULT_LOGGING_ENABLED=ON -DDEFAULT_EXIT_HOOKS_ENABLED=OFF ..
 %cmake% --build . --config %CMAKE_BUILD_TYPE% --target INSTALL
 
 cd ..
